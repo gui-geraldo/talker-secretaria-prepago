@@ -16,7 +16,7 @@ const Pricing = () => {
       "Acesso à IA 24h por dia",
       "Painel de controle completo",
     ],
-    redirectUrl: "https://payfast.greenn.com.br/134091/offer/eQXjY9",
+    redirectUrl: "https://payfast.greenn.com.br/134091/offer/XXHfYR",
   };
 
   const creditPacks = [

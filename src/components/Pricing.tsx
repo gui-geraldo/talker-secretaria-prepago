@@ -6,7 +6,6 @@ const Pricing = () => {
   const { openForm } = useLeadForm();
 
   const subscription = {
-    name: "Assinatura Mensal",
     price: "R$ 299",
     discountedPrice: "R$ 99",
     bonus: "Bônus de 1.000 créditos",
@@ -51,37 +50,32 @@ const Pricing = () => {
         {/* PLANO PRINCIPAL */}
         <div className="max-w-3xl mx-auto mb-16">
           <div className="bg-card rounded-3xl p-10 shadow-medium border-2 border-primary/40 text-center relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <span className="bg-highlight text-highlight-foreground px-6 py-2 rounded-full font-bold text-sm shadow-medium">
-              </span>
-            </div>
-
-            <h3 className="font-headline text-3xl font-bold mb-6">
-              {subscription.name}
-            </h3>
-
             {/* Preço */}
             <div className="flex flex-col items-center justify-center mb-3 min-h-[80px]">
-              <div className="text-2xl text-muted-foreground line-through mb-1">
+              <div className="text-3xl md:text-4xl text-muted-foreground line-through mb-2">
                 {subscription.price}
               </div>
-              <div className="text-5xl font-black text-primary">
+              <div className="text-6xl md:text-7xl font-black text-primary">
                 {subscription.discountedPrice}
               </div>
-              <div className="text-sm text-muted-foreground mt-1"></div>
+              <div className="text-base md:text-lg text-muted-foreground mt-1">
+                por mês
+              </div>
             </div>
 
             {/* Bônus */}
-            <div className="text-lg font-semibold text-secondary mb-6">
+            <div className="text-xl md:text-2xl font-semibold text-secondary mb-8">
               🎁 {subscription.bonus}
             </div>
 
             {/* Features */}
-            <ul className="space-y-3 mb-8 text-left max-w-md mx-auto">
+            <ul className="space-y-4 mb-10 text-left max-w-md mx-auto">
               {subscription.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">{feature}</span>
+                  <Check className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-lg md:text-xl text-muted-foreground">
+                    {feature}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -89,11 +83,11 @@ const Pricing = () => {
             <Button
               variant="hero"
               size="lg"
-              className="w-full md:w-2/3"
+              className="w-full md:w-2/3 text-lg md:text-xl py-6"
               onClick={() =>
                 openForm({
-                  productName: "Assinatura Mensal",
-                  form_id: "assinatura_mensal_v1",
+                  productName: "Plano Promocional",
+                  form_id: "assinatura_promocional_v1",
                   redirectUrl: subscription.redirectUrl,
                 })
               }
@@ -116,14 +110,14 @@ const Pricing = () => {
               key={index}
               className="bg-card rounded-2xl p-8 shadow-medium border-2 border-border/50 text-center transition-base hover:shadow-strong"
             >
-              <h4 className="font-bold text-xl mb-3">{pack.name}</h4>
-              <div className="text-3xl font-black text-primary mb-6">
+              <h4 className="font-bold text-xl md:text-2xl mb-4">{pack.name}</h4>
+              <div className="text-3xl md:text-4xl font-black text-primary mb-8">
                 {pack.price}
               </div>
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full"
+                className="w-full text-lg md:text-xl py-5"
                 onClick={() =>
                   openForm({
                     productName: pack.name,

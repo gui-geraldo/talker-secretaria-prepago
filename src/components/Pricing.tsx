@@ -1,42 +1,45 @@
 import { Button } from "@/components/ui/button";
-import { Check, MessageCircle } from "lucide-react";
+import { Check, MessageCircle, Coins } from "lucide-react";
 import { useLeadForm } from "@/contexts/LeadFormContext";
 
 const Pricing = () => {
   const { openForm } = useLeadForm();
 
-  const plans = [
+  // Plano principal (assinatura mensal)
+  const mainPlan = {
+    name: "Assinatura Mensal",
+    price: "R$ 199",
+    discountedPrice: "R$ 99",
+    bonusCredits: "Bônus de 1.000 créditos",
+    features: [
+      "Mensagens de texto: 1 crédito/mensagem",
+      "Mensagens de áudio: 3 créditos/mensagem",
+      "Atendimento em Português",
+      "Acesso à IA 24h por dia",
+      "Painel de controle completo",
+    ],
+    redirectUrl: "https://payfast.greenn.com.br/134091/offer/eQXjY9",
+  };
+
+  // Pacotes de créditos adicionais
+  const creditPackages = [
     {
-      name: "Starter",
-      price: "R$ 599",
-      activationFee: "R$ 350",
-      features: [
-        "50 mensagens da IA por contato",
-        "Ouve áudios: Não",
-        "1 usuários",
-        "1 WhatsApps conectados",
-        "Atendimento: Só Português",
-        "20.000 mensagens/mês",
-      ],
-      highlight: false,
-      redirectUrl: "https://payfast.greenn.com.br/134091/offer/kPCLXC",
+      name: "Pacote 100 Créditos",
+      price: "R$ 9,90",
+      credits: "100 créditos",
+      redirectUrl: "https://payfast.greenn.com.br/134091/offer/p1",
     },
     {
-      name: "Pro",
-      price: "R$ 799",
-      discountedPrice: "R$ 599", // preço promocional
-      activationFee: "R$ 350",
-      discountedActivationFee: "R$ 0", // taxa grátis
-      features: [
-        "Mensagens ilimitadas por contato",
-        "Ouve áudios: Sim",
-        "15 usuários",
-        "5 WhatsApps conectados",
-        "Atendimento: 24 Idiomas",
-        "Mensagens ilimitadas",
-      ],
-      highlight: true,
-      redirectUrl: "https://payfast.greenn.com.br/134091/offer/eQXjY9",
+      name: "Pacote 1.000 Créditos",
+      price: "R$ 59,90",
+      credits: "1.000 créditos",
+      redirectUrl: "https://payfast.greenn.com.br/134091/offer/p2",
+    },
+    {
+      name: "Pacote 50.000 Créditos",
+      price: "R$ 199,00",
+      credits: "50.000 créditos",
+      redirectUrl: "https://payfast.greenn.com.br/134091/offer/p3",
     },
   ];
 
@@ -48,94 +51,109 @@ const Pricing = () => {
             Escolha seu <span className="text-primary">plano</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Não sabe por onde começar? Vamos configurar sua secretaria virtual hoje.
+            Configure sua secretaria virtual e controle seus créditos de forma flexível.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-          {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`bg-card rounded-3xl p-8 shadow-medium border-2 transition-base hover:shadow-strong ${
-                plan.highlight
-                  ? "border-primary/50 relative"
-                  : "border-border/50"
-              }`}
-            >
-              {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-highlight text-highlight-foreground px-6 py-2 rounded-full font-bold text-sm shadow-medium">
-                    Mais Popular
-                  </span>
+        {/* PLANO PRINCIPAL */}
+        <div className="max-w-2xl mx-auto mb-16">
+          <div className="bg-card rounded-3xl p-8 shadow-medium border-2 border-primary/50 relative">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span className="bg-highlight text-highlight-foreground px-6 py-2 rounded-full font-bold text-sm shadow-medium">
+                Mais Popular
+              </span>
+            </div>
+
+            <div className="text-center mb-6">
+              <h3 className="font-headline text-2xl font-bold mb-2">
+                {mainPlan.name}
+              </h3>
+
+              {/* Preço */}
+              <div className="flex flex-col items-center justify-center min-h-[80px] mb-2">
+                <div className="text-2xl text-muted-foreground line-through mb-1">
+                  {mainPlan.price}
                 </div>
-              )}
-
-              <div className="text-center mb-6">
-                <h3 className="font-headline text-2xl font-bold mb-2">{plan.name}</h3>
-
-                {/* Taxa de ativação */}
-                {plan.discountedActivationFee ? (
-                  <div className="text-sm font-medium text-muted-foreground mb-2">
-                    Taxa de ativação:{" "}
-                    <span className="line-through text-muted-foreground mr-2">
-                      {plan.activationFee}
-                    </span>
-                    <span className="font-bold text-primary">
-                      {plan.discountedActivationFee}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="text-sm font-medium text-muted-foreground mb-2">
-                    Taxa de ativação:{" "}
-                    <span className="font-bold text-foreground">
-                      {plan.activationFee}
-                    </span>
-                  </div>
-                )}
-
-                {/* Bloco de preço com alinhamento uniforme */}
-                <div className="flex flex-col items-center justify-center min-h-[80px] mb-1">
-                  {plan.discountedPrice ? (
-                    <>
-                      <div className="text-2xl text-muted-foreground line-through mb-1">
-                        {plan.price}
-                      </div>
-                      <div className="text-4xl font-black text-primary">
-                        {plan.discountedPrice}
-                      </div>
-                    </>
-                  ) : (
-                    <div className="text-4xl font-black text-primary">
-                      {plan.price}
-                    </div>
-                  )}
+                <div className="text-4xl font-black text-primary">
+                  {mainPlan.discountedPrice}
                 </div>
-
                 <div className="text-sm text-muted-foreground">por mês</div>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Bônus */}
+              <div className="text-sm font-medium text-primary mb-4">
+                🎁 {mainPlan.bonusCredits}
+              </div>
+            </div>
+
+            <ul className="space-y-3 mb-8">
+              {mainPlan.features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Button
+              variant="hero"
+              className="w-full"
+              size="lg"
+              onClick={() =>
+                openForm({
+                  productName: mainPlan.name,
+                  form_id: "pricing_mainplan_v1",
+                  redirectUrl: mainPlan.redirectUrl,
+                })
+              }
+            >
+              Assinar Agora!
+            </Button>
+          </div>
+        </div>
+
+        {/* PACOTES DE CRÉDITOS */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold mb-2">
+            Créditos adicionais
+          </h3>
+          <p className="text-muted-foreground mb-8">
+            Escolha o pacote ideal para o seu volume de atendimento.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+          {creditPackages.map((pkg, index) => (
+            <div
+              key={index}
+              className="bg-card rounded-3xl p-8 shadow-medium border-2 border-border/50 transition-base hover:shadow-strong"
+            >
+              <div className="text-center mb-4">
+                <Coins className="mx-auto text-primary w-10 h-10 mb-2" />
+                <h4 className="font-headline text-xl font-bold mb-1">
+                  {pkg.name}
+                </h4>
+                <div className="text-3xl font-black text-primary mb-1">
+                  {pkg.price}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {pkg.credits}
+                </div>
+              </div>
 
               <Button
-                variant={plan.highlight ? "hero" : "outline"}
+                variant="outline"
                 className="w-full"
                 size="lg"
                 onClick={() =>
                   openForm({
-                    productName: `Plano ${plan.name}`,
-                    form_id: `pricing_${plan.name.toLowerCase()}_v1`,
-                    redirectUrl: plan.redirectUrl,
+                    productName: pkg.name,
+                    form_id: `credit_package_${index + 1}`,
+                    redirectUrl: pkg.redirectUrl,
                   })
                 }
               >
-                Iniciar Agora!
+                Adquirir
               </Button>
             </div>
           ))}
@@ -148,8 +166,8 @@ const Pricing = () => {
             size="xl"
             onClick={() =>
               openForm({
-                productName: "CTA_Falalar_WPP_Preço",
-                form_id: "cta_whatsapp_preco_v1",
+                productName: "CTA_Falar_WPP_Preço",
+                form_id: "cta_whatsapp_preco_v2",
               })
             }
           >

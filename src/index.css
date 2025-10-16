@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Talker Flow Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+
+    /* Primary: #098acd */
+    --primary: 199 93% 42%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 199 93% 35%;
+
+    /* Secondary: #41b147 */
+    --secondary: 123 48% 48%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 123 48% 40%;
+
+    /* Highlight: #facc15 */
+    --highlight: 48 96% 53%;
+    --highlight-foreground: 0 0% 0%;
+
+    /* Accent: #7c3aed */
+    --accent: 258 90% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Neutral: #a6a6a6 */
+    --muted: 0 0% 65%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Neutral 2: #9ca3af */
+    --neutral: 214 14% 66%;
+    --neutral-foreground: 0 0% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 14% 90%;
+    --input: 214 14% 90%;
+    --ring: 199 93% 42%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsla(199, 93%, 42%, 0.08);
+    --shadow-medium: 0 4px 16px hsla(199, 93%, 42%, 0.12);
+    --shadow-strong: 0 8px 32px hsla(199, 93%, 42%, 0.16);
+    
+    /* Animations */
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 199 93% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 199 93% 45%;
+
+    --secondary: 123 48% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 123 48% 50%;
+
+    --muted: 0 0% 30%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 258 90% 68%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 199 93% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+  }
+
+  .font-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  .font-ui {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+
+  .transition-base {
+    transition: var(--transition-base);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}

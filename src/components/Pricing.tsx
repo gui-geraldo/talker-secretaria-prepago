@@ -53,7 +53,6 @@ const Pricing = () => {
           <div className="bg-card rounded-3xl p-10 shadow-medium border-2 border-primary/40 text-center relative">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
               <span className="bg-highlight text-highlight-foreground px-6 py-2 rounded-full font-bold text-sm shadow-medium">
-                Mais Popular
               </span>
             </div>
 
@@ -69,7 +68,7 @@ const Pricing = () => {
               <div className="text-5xl font-black text-primary">
                 {subscription.discountedPrice}
               </div>
-              <div className="text-sm text-muted-foreground mt-1">por mês</div>
+              <div className="text-sm text-muted-foreground mt-1"></div>
             </div>
 
             {/* Bônus */}

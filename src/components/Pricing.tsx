@@ -7,7 +7,6 @@ const Pricing = () => {
 
   const subscription = {
     price: "R$ 299",
-    discountedPrice: "R$ 99",
     bonus: "Bônus de 1.000 créditos",
     features: [
       "Mensagens de texto: 1 crédito / mensagem",
@@ -52,11 +51,8 @@ const Pricing = () => {
           <div className="bg-card rounded-3xl p-10 shadow-medium border-2 border-primary/40 text-center relative">
             {/* Preço */}
             <div className="flex flex-col items-center justify-center mb-3 min-h-[80px]">
-              <div className="text-3xl md:text-4xl text-muted-foreground line-through mb-2">
-                {subscription.price}
-              </div>
               <div className="text-6xl md:text-7xl font-black text-primary">
-                {subscription.discountedPrice}
+                {subscription.price}
               </div>
               <div className="text-base md:text-lg text-muted-foreground mt-1">
                 por mês
@@ -86,8 +82,8 @@ const Pricing = () => {
               className="w-full md:w-2/3 text-lg md:text-xl py-6"
               onClick={() =>
                 openForm({
-                  productName: "Plano Promocional",
-                  form_id: "assinatura_promocional_v1",
+                  productName: "Plano Mensal",
+                  form_id: "assinatura_normal_v1",
                   redirectUrl: subscription.redirectUrl,
                 })
               }
